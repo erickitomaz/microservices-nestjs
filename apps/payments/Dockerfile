@@ -10,7 +10,9 @@ COPY nest-cli.json nest-cli.json
 COPY apps/payments apps/payments 
 COPY libs libs
 
-RUN npm install -r
+RUN npm install
+RUN cd apps/payments && npm install
+
 RUN npm run build payments
 
 FROM node:alpine AS production
